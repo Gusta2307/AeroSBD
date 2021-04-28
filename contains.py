@@ -29,7 +29,7 @@ def contains_user_start(id_T):
         print(command[1])
         User = cur.fetchall()
         print(User)
-        if User != None:
+        if User != None and len(User) > 1:
             result = f"Empleado_{User[1]}"
         print(result)
         # close communication with the PostgreSQL database server
