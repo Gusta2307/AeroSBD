@@ -13,7 +13,7 @@ def create_tables():
             Last_name VARCHAR(50) NOT NULL,
             Country_C VARCHAR(50) NOT NULL,
             ID_Telegram INTEGER NOT NULL  
-        ))
+        )
         """,
         """ 
         CREATE TABLE IF NOT EXISTS Aeroline (
