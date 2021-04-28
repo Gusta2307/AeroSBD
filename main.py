@@ -3,13 +3,21 @@ from telegram.ext import Updater, MessageHandler, CommandHandler, InlineQueryHan
 from telegram import InlineQueryResultArticle, InputTextMessageContent, User
 from random import getrandbits
 
+import os
+import psycopg2
+
+import create_table
+
+
 TOKEN = '1663513841:AAHGbvXjXU6g69NlGRzV6KdlxGIMs_A_E28'
+DATABASE_URL = 'postgres://mhbnxcvamfolth:b3ce9ceca51783eb8a793991c79434f00b066fb073f5e4f5cac29f40620762d8@ec2-3-233-7-12.compute-1.amazonaws.com:5432/d7fsvfhnksl0sp'
 
 def start(update, context):
     # ANTES HAY REVISAR SI ESTA EN LA BD
     name = update.message.chat.first_name
     msg = f"Hola {name}, que desea hacer??"
-    
+    create_table.create_tables()
+    print("MMMMMMMMMM")
     button_list = []
     button_list.append(telegram.InlineKeyboardButton("Cliente", callback_data="new_client"))
     button_list.append(telegram.InlineKeyboardButton("Empleado", callback_data="new_employee"))
