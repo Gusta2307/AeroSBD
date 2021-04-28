@@ -7,6 +7,7 @@ import os
 import psycopg2
 
 import create_table
+import insert_table
 
 
 TOKEN = '1663513841:AAHGbvXjXU6g69NlGRzV6KdlxGIMs_A_E28'
@@ -38,10 +39,15 @@ def build_menu(buttons, n_cols, header_buttons=None, header_buttons1=None, foote
     return menu
 
 
+def test(update, context):
+    insert_table.insert_table("Pepe")
+    print("ok")
+
 def main():
     update = Updater(TOKEN, use_context=True)
     dp = update.dispatcher
     dp.add_handler(CommandHandler('start', start))
+    dp.add_handler(CommandHandler('a', test))
     
     
     
