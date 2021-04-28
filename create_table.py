@@ -1,5 +1,5 @@
 import psycopg2
-from config import config
+#from config import config
 
 DATABASE_URL = 'postgres://mhbnxcvamfolth:b3ce9ceca51783eb8a793991c79434f00b066fb073f5e4f5cac29f40620762d8@ec2-3-233-7-12.compute-1.amazonaws.com:5432/d7fsvfhnksl0sp'
 
