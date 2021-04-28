@@ -6,10 +6,10 @@ DATABASE_URL = os.environ.get("DATABASE_URL")
 def contains_user_start(id_T):
     command = (
         f""" 
-        SELECT ID_Telegram FROM Client WHERE ID_Telegram == {id_T}
+        SELECT ID_Telegram FROM Client WHERE ID_Telegram = {id_T}
         """,
         f"""
-        SELECT ID_Telegram, Job FROM Employee WHERE ID_Telegram == {id_T}
+        SELECT ID_Telegram, Job FROM Employee WHERE ID_Telegram = {id_T}
         """)
     User = None
     result = ""
