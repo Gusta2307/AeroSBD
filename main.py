@@ -9,9 +9,9 @@ import psycopg2
 import create_table
 import insert_table
 import contains
-import buttons
 import all_messages
 
+from buttons import *
 from tags import *
 
 
@@ -20,11 +20,10 @@ def start(update, context):
     name = update.message.chat.first_name
     if user_type == "":
         msg = f"Hola {name}, que desea hacer??"
-        create_table.create_tables()
         button_list = []
         button_list.append(telegram.InlineKeyboardButton("Cliente", callback_data=NEW_CLIENT))
         button_list.append(telegram.InlineKeyboardButton("Empleado", callback_data=NEW_EMPLOYEE))
-        reply_markup = telegram.InlineKeyboardMarkup(buttons.build_menu(button_list, n_cols=2))
+        reply_markup = telegram.InlineKeyboardMarkup(build_menu(button_list, n_cols=2))
         update.message.chat.send_message(text=msg, parse_mode = 'Markdown', reply_markup=reply_markup)
     else:
         message = all_messages.message_menu(user_type, name)
@@ -32,8 +31,25 @@ def start(update, context):
 
 def new_client_callback_query(update, context):
     query = update.callback_query
+    initialize_client(context)
     if query.data == NEW_CLIENT:
-        print("yeap")
+        button_list = []
+        button_list.append(telegram.InlineKeyboardButton("Atras", callback_data=BACK))
+        button_list.append(telegram.InlineKeyboardButton("Siguiente", callback_data=NEXT))
+        button_list.append(telegram.InlineKeyboardButton("Cancelar", callback_data=CANCEL))
+        reply_markup = telegram.InlineKeyboardMarkup(build_menu(button_list, n_cols=2))
+        update.callback_query.message.chat.edit_message("Introduzca su Nombre.")
+        return NAME_CLIENT
+
+def initialize_client(context):
+    context.user_data["name"] = ""
+    context.user_data["apellidos"] = ""
+    context.user_data["pais"] = ""
+
+def name_client_callback_query(update, context):
+    name = update.message.text
+    context.user_data["name"] = name
+    update.message.chat.send_message("Introduzca sus apellidos.")
 
 def main():
     TOKEN = os.environ.get("TOKEN")
@@ -44,10 +60,10 @@ def main():
     
     new_client_callback = ConversationHandler(
         entry_points = [
-            CallbackQueryHandler(new_client_callback_query)
+            CallbackQueryHandler(new_client_callback_query, pass_user_data=True)
         ],
         states = {
-			#PREMIOS:[CallbackQueryHandler(premios_callbackQuery, pass_user_data=True)],
+			NAME_CLIENT:[MessageHandler(Filters.text, name_client_callback_query, pass_user_data=True)],
 		}, 
         fallbacks = []
     )
