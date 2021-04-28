@@ -27,7 +27,7 @@ def contains_user_start(id_T):
         User = cur.fetchall()
         if User != None:
             result = f"Empleado_{User[1]}"
-
+        print(result)
         # close communication with the PostgreSQL database server
         cur.close()
     except (Exception, psycopg2.DatabaseError) as error:
