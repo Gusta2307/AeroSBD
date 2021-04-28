@@ -38,7 +38,7 @@ def new_client_callback_query(update, context):
         button_list.append(telegram.InlineKeyboardButton("Siguiente", callback_data=NEXT))
         button_list.append(telegram.InlineKeyboardButton("Cancelar", callback_data=CANCEL))
         reply_markup = telegram.InlineKeyboardMarkup(build_menu(button_list, n_cols=2))
-        update.callback_query.message.chat.edit_text("Introduzca su Nombre.")
+        update.callback_query.message.edit_text("Introduzca su Nombre.")
         return NAME_CLIENT
 
 def initialize_client(context):
