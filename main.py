@@ -40,7 +40,7 @@ def main():
     dp.add_handler(CommandHandler('start', start))
     dp.add_handler(CommandHandler('a', test))
     
-    create_table.create_table()
+    create_table.create_tables()
     
     
     PORT = int(os.environ.get("PORT", "8443"))
