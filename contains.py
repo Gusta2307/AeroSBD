@@ -19,12 +19,14 @@ def contains_user_start(id_T):
         cur = conn.cursor()
         
         cur.execute(command[0])
+        print(command[0])
         User = cur.fetchall()
         print(User)
         if User != None:
             result = "Cliente"
         
         cur.execute(command[1])
+        print(command[1])
         User = cur.fetchall()
         print(User)
         if User != None:
