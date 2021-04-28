@@ -22,14 +22,14 @@ def contains_user_start(id_T):
         print(command[0])
         User = cur.fetchall()
         print(User)
-        if User != None:
+        if User != []:
             result = "Cliente"
         
         cur.execute(command[1])
         print(command[1])
         User = cur.fetchall()
         print(User)
-        if User != None and len(User) > 1:
+        if User != [] and len(User) > 1:
             result = f"Empleado_{User[1]}"
         print(result)
         # close communication with the PostgreSQL database server
