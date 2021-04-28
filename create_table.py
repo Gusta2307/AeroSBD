@@ -47,6 +47,7 @@ def create_tables():
         # connect to the PostgreSQL server
         conn = psycopg2.connect(DATABASE_URL, sslmode='require')
         cur = conn.cursor()
+        print("Holaaaaaaaaaaa")
         # create table one by one
         for command in commands:
             cur.execute(command)
