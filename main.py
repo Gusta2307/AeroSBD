@@ -40,7 +40,7 @@ def build_menu(buttons, n_cols, header_buttons=None, header_buttons1=None, foote
 
 
 def test(update, context):
-    insert_table.insert_table("Pepe")
+    insert_table.insert_vendor("Pepe")
     print("ok")
 
 def main():
