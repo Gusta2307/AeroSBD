@@ -1,5 +1,5 @@
 import telegram
-from telegram.ext import Updater, MessageHandler, CommandHandler, InlineQueryHandler, Filters
+from telegram.ext import Updater, MessageHandler, CommandHandler, InlineQueryHandler, Filters, ConversationHandler, CallbackQueryHandler
 from telegram import InlineQueryResultArticle, InputTextMessageContent, User
 from random import getrandbits
 
@@ -12,6 +12,7 @@ import contains
 import buttons
 import all_messages
 
+from tags import *
 
 
 def start(update, context):
@@ -21,25 +22,38 @@ def start(update, context):
         msg = f"Hola {name}, que desea hacer??"
         create_table.create_tables()
         button_list = []
-        button_list.append(telegram.InlineKeyboardButton("Cliente", callback_data="new_client"))
-        button_list.append(telegram.InlineKeyboardButton("Empleado", callback_data="new_employee"))
+        button_list.append(telegram.InlineKeyboardButton("Cliente", callback_data=NEW_CLIENT))
+        button_list.append(telegram.InlineKeyboardButton("Empleado", callback_data=NEW_EMPLOYEE))
         reply_markup = telegram.InlineKeyboardMarkup(buttons.build_menu(button_list, n_cols=2))
         update.message.chat.send_message(text=msg, parse_mode = 'Markdown', reply_markup=reply_markup)
     else:
         message = all_messages.message_menu(user_type, name)
         update.message.chat.send_message(text=message[0], parse_mode = 'Markdown', reply_markup=message[1])
 
-def test(update, context):
-    insert_table.insert_vendor("Pepe")
-    print("ok")
+def new_client_callback_query(update, context):
+    query = update.callback_query
+    if query.data == NEW_CLIENT:
+        print("yeap")
 
 def main():
     TOKEN = os.environ.get("TOKEN")
     update = Updater(TOKEN, use_context=True)
     dp = update.dispatcher
     dp.add_handler(CommandHandler('start', start))
-    dp.add_handler(CommandHandler('a', test))
+    #dp.add_handler(CommandHandler('a', test))
     
+    new_client_callback = ConversationHandler(
+        entry_points = [
+            CallbackQueryHandler(new_client_callback_query)
+        ],
+        states = {
+			#PREMIOS:[CallbackQueryHandler(premios_callbackQuery, pass_user_data=True)],
+		}, 
+        fallbacks = []
+    )
+
+    dp.add_handler(new_client_callback)
+    #SE CREAN LAS TABLAS DE LA BD
     create_table.create_tables()
     
     
