@@ -8,51 +8,49 @@ import psycopg2
 
 import create_table
 import insert_table
+import contains
+import buttons
+import all_messages
 
 
-TOKEN = '1663513841:AAHGbvXjXU6g69NlGRzV6KdlxGIMs_A_E28'
-DATABASE_URL = 'postgres://mhbnxcvamfolth:b3ce9ceca51783eb8a793991c79434f00b066fb073f5e4f5cac29f40620762d8@ec2-3-233-7-12.compute-1.amazonaws.com:5432/d7fsvfhnksl0sp'
 
 def start(update, context):
-    # ANTES HAY REVISAR SI ESTA EN LA BD
+    user_type = contains.contains_user_start(update.message.chat.id)
     name = update.message.chat.first_name
-    msg = f"Hola {name}, que desea hacer??"
-    create_table.create_tables()
-    print("MMMMMMMMMM")
-    button_list = []
-    button_list.append(telegram.InlineKeyboardButton("Cliente", callback_data="new_client"))
-    button_list.append(telegram.InlineKeyboardButton("Empleado", callback_data="new_employee"))
-    reply_markup = telegram.InlineKeyboardMarkup(build_menu(button_list, n_cols=2))
-    update.message.chat.send_message(text=msg, parse_mode = 'Markdown', reply_markup=reply_markup)
-
-
-def build_menu(buttons, n_cols, header_buttons=None, header_buttons1=None, footer_buttons=None):
-    menu = [buttons[i:i + n_cols] for i in range(0, len(buttons), n_cols)]
-
-    if header_buttons:
-        menu.insert(0, header_buttons)
-        menu.insert(1, header_buttons1)
-
-    if footer_buttons:
-        menu.append(footer_buttons)
-
-    return menu
-
+    if user_type == "":
+        msg = f"Hola {name}, que desea hacer??"
+        create_table.create_tables()
+        button_list = []
+        button_list.append(telegram.InlineKeyboardButton("Cliente", callback_data="new_client"))
+        button_list.append(telegram.InlineKeyboardButton("Empleado", callback_data="new_employee"))
+        reply_markup = telegram.InlineKeyboardMarkup(buttons.build_menu(button_list, n_cols=2))
+        update.message.chat.send_message(text=msg, parse_mode = 'Markdown', reply_markup=reply_markup)
+    else:
+        message = all_messages.message_menu(user_type, name)
+        update.message.chat.send_message(text=message[0], parse_mode = 'Markdown', reply_markup=message[1])
 
 def test(update, context):
     insert_table.insert_vendor("Pepe")
     print("ok")
 
 def main():
+    TOKEN = os.environ.get("TOKEN")
     update = Updater(TOKEN, use_context=True)
     dp = update.dispatcher
     dp.add_handler(CommandHandler('start', start))
     dp.add_handler(CommandHandler('a', test))
     
+    create_table.create_table()
     
     
-    update.start_polling()
-    update.idle()
+    PORT = int(os.environ.get("PORT", "8443"))
+    HEROKU_APP_NAME = os.environ.get("HEROKU_APP_NAME")
+    update.start_webhook(listen = "0.0.0.0", port = PORT, url_path = TOKEN)
+    update.bot.set_webhook(f"https://{HEROKU_APP_NAME}.herokuapp.com/{TOKEN}")
+
+	
+	
+	
 
 
 if __name__ == '__main__':
