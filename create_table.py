@@ -17,14 +17,14 @@ def create_tables():
         """,
         """ 
         CREATE TABLE IF NOT EXISTS Aeroline (
-            ID_A PRIMARY KEY NOT NULL,
+            ID_A INTEGER PRIMARY KEY NOT NULL,
             Name VARCHAR(50) NOT NULL,
             Country_N VARCHAR(50) NOT NULL
         )
         """,
         """ 
         CREATE TABLE IF NOT EXISTS Employee (
-            ID_E PRIMARY KEY NOT NULL,
+            ID_E INTEGER PRIMARY KEY NOT NULL,
             ID_Telegram INTEGER,
             Name VARCHAR(50) NOT NULL,
             Country_N VARCHAR(50) NOT NULL,
