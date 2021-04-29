@@ -36,6 +36,7 @@ def start(update, context):
     else:
         message = message_menu(user_type, name)
         update.message.chat.send_message(text=message[0], parse_mode = 'Markdown', reply_markup=message[1])
+    return CALLBACK_QUERY_START
 
 def new_client_callback_query(update, context):
     logger.info(f"El usuario {update.effective_user['first_name']}, new_client")
@@ -77,17 +78,20 @@ def name_client_message_text(update, context):
     name = update.message.text
     context.user_data["name"] = name
     logger.info(f"El usuario {update.effective_user['first_name']}, ha enviado el siguiente texto: name_client -> {name}")
+    return CALLBACK_QUERY_START
 
 def last_name_client_message_text(update, context):
     last_name = update.message.text
     context.user_data["last_name"] = last_name
     logger.info(f"El usuario {update.effective_user['first_name']}, ha enviado el siguiente texto: last_name_client -> {last_name}")
+    return CALLBACK_QUERY_START
     
 
 def country_client_message_text(update, context):
     country = update.message.text
     context.user_data["country"] = country
     logger.info(f"El usuario {update.effective_user['first_name']}, ha enviado el siguiente texto: country_client -> {country}")
+    return CALLBACK_QUERY_START
 
 def check_info_callback_query(update, context):
     logger.info(f"El usuario {update.effective_user['first_name']}, check_info")
@@ -103,6 +107,7 @@ def check_info_callback_query(update, context):
     button_list.append(telegram.InlineKeyboardButton("Cancelar", callback_data=CANCEL))
     reply_markup = telegram.InlineKeyboardMarkup(build_menu(button_list, n_cols=2))
     update.callback_query.message.edit_text(text=msg, parse_mode = 'Markdown', reply_markup=reply_markup)
+    return CALLBACK_QUERY_START
 
 def cancel_callback_query(update, context):
     logger.info(f"El usuario {update.effective_user['first_name']}, cancel")
