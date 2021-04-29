@@ -102,6 +102,7 @@ def check_info_callback_query(update, context):
         Nombre: {name}\n\
         Apellidos: {last_name}\n\
         Pais: {country}"
+    button_list = []
     button_list.append(telegram.InlineKeyboardButton("No", callback_data="atras_country"))
     button_list.append(telegram.InlineKeyboardButton("Si", callback_data="Done"))
     button_list.append(telegram.InlineKeyboardButton("Cancelar", callback_data=CANCEL))
