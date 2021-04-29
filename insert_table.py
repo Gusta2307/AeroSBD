@@ -38,7 +38,7 @@ def insert_cliente(update, context):
     try:
         conn = psycopg2.connect(DATABASE_URL, sslmode='require')
         cur = conn.cursor()
-        cur.execute(query)
+        cur.execute(query, (name,last_name,country,id_telegram))
         conn.commit()
         cur.close()
     except (Exception, psycopg2.DatabaseError) as error:
