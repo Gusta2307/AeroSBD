@@ -33,7 +33,7 @@ def insert_cliente(update, context):
 
     query = f""" 
             INSERT INTO Client(Name_C, Last_name_C, Country_C, ID_Telegram)
-            VALUES({name}, {last_name}, {country}, {id_telegram})
+            VALUES({name}, {last_name}, {country}, {id_telegram});
         """
     
     try:
