@@ -138,7 +138,7 @@ def callback_query_start(update, context):
         if query[1] == "client":
             return new_client_callback_query(update, context)
     elif query[0] == "Done":
-        insert_cliente(context)
+        insert_cliente(update,context)
         message_menu("client", context.user_data["name"])
         return ConversationHandler.END
     elif query[0] == CANCEL:
