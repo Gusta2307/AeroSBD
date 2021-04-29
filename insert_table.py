@@ -31,9 +31,9 @@ def insert_cliente(update, context):
     country = context.user_data["country"]
     id_telegram = update._effective_chat.id
 
-    query = """ 
+    query = f""" 
             INSERT INTO Client(Name_C, Last_name_C, Country_C, ID_Telegram)
-            VALUES({name}, {last_name}, {coutry}, {id_telegram})
+            VALUES({name}, {last_name}, {country}, {id_telegram})
         """
     
     try:
