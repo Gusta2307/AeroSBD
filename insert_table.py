@@ -32,7 +32,7 @@ def insert_cliente(update, context):
     id_telegram = update._effective_chat.id
 
     query = f""" 
-            INSERT INTO Client(Name_C, Last_name_C, Country_C, ID_Telegram)
+            INSERT INTO Client(`Name_C`, `Last_name_C`, `Country_C`, `ID_Telegram`)
             VALUES({name}, {last_name}, {country}, {id_telegram});
         """
     
