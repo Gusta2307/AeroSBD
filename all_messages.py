@@ -5,7 +5,7 @@ def message_menu(user_type, name):
     msg = f"Hola {name}, que desea hacer?"
     button_list = []
     reply_markup = None
-    if user_type == "Cliente":
+    if user_type == "client":
         button_list.append(telegram.InlineKeyboardButton("Prereservas", callback_data="prereserva_client"))
         button_list.append(telegram.InlineKeyboardButton("Ver vuelos disponibles", callback_data="vuelos_disp_client"))
         button_list.append(telegram.InlineKeyboardButton("Ver mis vuelos futuros", callback_data="vuelos_ fut_client"))

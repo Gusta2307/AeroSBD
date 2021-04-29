@@ -24,3 +24,26 @@ def insert_vendor(vendor_name):
     finally:
         if conn is not None:
             conn.close()
+
+def insert_cliente(update, context):
+    name = context.user_data["name"]
+    last_name = context.user_data["last_name"]
+    country = context.user_data["country"]
+    id_telegram = update._effective_chat.id
+
+    query = """ 
+            INSERT INTO Client(Name_C, Last_name_C, Country_C, ID_Telegram)
+            VALUES({name}, {last_name}, {coutry}, {id_telegram})
+        """
+    
+    try:
+        conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+        cur = conn.cursor()
+        cur.execute(query)
+        conn.commit()
+        cur.close()
+    except (Exception, psycopg2.DatabaseError) as error:
+        print(error)
+    finally:
+        if conn is not None:
+            conn.close()

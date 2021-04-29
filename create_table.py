@@ -9,8 +9,8 @@ def create_tables():
         """ 
         CREATE TABLE IF NOT EXISTS Client (
             ID_C INTEGER PRIMARY KEY NOT NULL,
-            Name VARCHAR(50) NOT NULL,
-            Last_name VARCHAR(50) NOT NULL,
+            Name_C VARCHAR(50) NOT NULL,
+            Last_name_C VARCHAR(50) NOT NULL,
             Country_C VARCHAR(50) NOT NULL,
             ID_Telegram INTEGER NOT NULL  
         )
