@@ -153,7 +153,7 @@ def main():
         ],
         states = {
             #CLIENT: CallbackQueryHandler(new_client_callback_query, pass_user_data=True),
-            CALLBACK_QUERY_START: CallbackQueryHandler(callback_query_start),
+            CALLBACK_QUERY_START: [CallbackQueryHandler(callback_query_start)],
 			NAME_CLIENT:[MessageHandler(Filters.text, name_client_message_text, pass_user_data=True)],
             LAST_NAME_CLIENT: [MessageHandler(Filters.text, last_name_client_message_text, pass_user_data=True)],
             COUNTRY_CLIENT: [MessageHandler(Filters.text, country_client_message_text, pass_user_data=True)],
