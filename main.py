@@ -20,7 +20,7 @@ logging.basicConfig(
     level = logging.INFO,
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
 )
-
+logger = logging.getLogger()
 
 def start(update, context):
     user_type = contains.contains_user_start(update.message.chat.id)
