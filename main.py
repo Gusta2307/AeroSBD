@@ -115,7 +115,7 @@ def callback_query_start(update, context):
         if query[1] == "start":
             return start(update, context)
         elif query[1] == "name":
-            return name_client_callback_query(update, context)
+            return new_client_callback_query(update, context)
         elif query[1] == "lastName":
             return last_name_client_callback_query(update, context)
         elif query[1] == "country":
@@ -152,9 +152,9 @@ def main():
             CommandHandler('start', start)
         ],
         states = {
-            CLIENT: CallbackQueryHandler(new_client_callback_query, pass_user_data=True),
+            #CLIENT: CallbackQueryHandler(new_client_callback_query, pass_user_data=True),
             CALLBACK_QUERY_START: CallbackQueryHandler(callback_query_start),
-			NAME_CLIENT:[MessageHandler(Filters.text, name_client_callback_query, pass_user_data=True)],
+			NAME_CLIENT:[MessageHandler(Filters.text, name_client_message_text, pass_user_data=True)],
             LAST_NAME_CLIENT: [MessageHandler(Filters.text, last_name_client_message_text, pass_user_data=True)],
             COUNTRY_CLIENT: [MessageHandler(Filters.text, country_client_message_text, pass_user_data=True)],
 		}, 
