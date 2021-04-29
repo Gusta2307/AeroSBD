@@ -111,6 +111,7 @@ def cancel_callback_query(update, context):
 
 def callback_query_start(update, context):
     query = update.callback_query.split('_')
+    print(query)
     if query[0] == "atras":
         if query[1] == "start":
             return start(update, context)
