@@ -25,6 +25,7 @@ logging.basicConfig(
 def start(update, context):
     user_type = contains.contains_user_start(update.message.chat.id)
     name = update.message.chat.first_name
+    logger.info(f"El usuario {name}, ha iniciado el bot")
     if user_type == "":
         msg = f"Hola {name}, que desea hacer??"
         button_list = []
@@ -37,6 +38,7 @@ def start(update, context):
         update.message.chat.send_message(text=message[0], parse_mode = 'Markdown', reply_markup=message[1])
 
 def new_client_callback_query(update, context):
+    logger.info(f"El usuario {update.effective_user['first_name']}, new_client")
     initialize_client(context)
     button_list = []
     button_list.append(telegram.InlineKeyboardButton("Atras", callback_data="atras_start"))
@@ -47,6 +49,7 @@ def new_client_callback_query(update, context):
     return NAME_CLIENT
 
 def last_name_client_callback_query(update, context):
+    logger.info(f"El usuario {update.effective_user['first_name']}, last_name_client")
     button_list = []
     button_list.append(telegram.InlineKeyboardButton("Atras", callback_data="atras_name"))
     button_list.append(telegram.InlineKeyboardButton("Siguiente", callback_data="siguiente_country"))
@@ -56,6 +59,7 @@ def last_name_client_callback_query(update, context):
     return LAST_NAME_CLIENT
 
 def country_client_callback_query(update, context):
+    logger.info(f"El usuario {update.effective_user['first_name']}, country_client")
     button_list = []
     button_list.append(telegram.InlineKeyboardButton("Atras", callback_data="atras_lastName"))
     button_list.append(telegram.InlineKeyboardButton("Siguiente", callback_data="siguiente_end"))
@@ -72,22 +76,27 @@ def initialize_client(context):
 def name_client_message_text(update, context):
     name = update.message.text
     context.user_data["name"] = name
+    logger.info(f"El usuario {update.effective_user['first_name']}, ha enviado el siguiente texto: name_client -> {name}")
 
 def last_name_client_message_text(update, context):
     last_name = update.message.text
     context.user_data["last_name"] = last_name
+    logger.info(f"El usuario {update.effective_user['first_name']}, ha enviado el siguiente texto: last_name_client -> {last_name}")
+    
 
 def country_client_message_text(update, context):
     country = update.message.text
     context.user_data["country"] = country
+    logger.info(f"El usuario {update.effective_user['first_name']}, ha enviado el siguiente texto: country_client -> {country}")
 
 def check_info_callback_query(update, context):
+    logger.info(f"El usuario {update.effective_user['first_name']}, check_info")
     name = context.user_data["name"]
     last_name = context.user_data["last_name"]
     country = context.user_data["country"]
     msg = f"Esta seguro que la informacion siguiente es correcta? \n\n\
         Nombre: {name}\n\
-        Apellidos: {last_name]}\n\
+        Apellidos: {last_name}\n\
         Pais: {country}"
     button_list.append(telegram.InlineKeyboardButton("No", callback_data="atras_country"))
     button_list.append(telegram.InlineKeyboardButton("Si", callback_data="Done"))
@@ -96,6 +105,7 @@ def check_info_callback_query(update, context):
     update.callback_query.message.edit_text(text=msg, parse_mode = 'Markdown', reply_markup=reply_markup)
 
 def cancel_callback_query(update, context):
+    logger.info(f"El usuario {update.effective_user['first_name']}, cancel")
     update.callback_query.message.delete()
     return ConversationHandler.END
 
