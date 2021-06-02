@@ -51,7 +51,7 @@ elif mode == "prod":
     def run(updater):
         PORT = int(os.environ.get("PORT", "8443"))
         HEROKU_APP_NAME = os.environ.get("HEROKU_APP_NAME")
-        updater.start_webhook(listen="0.0.0.0", port=PORT, url=TOKEN)
+        updater.start_webhook(listen="0.0.0.0", port=PORT, url_path=TOKEN)
         updater.bot.set_webhook("https://{HEROKU_APP_NAME}.herokuapp.com/{TOKEN}")
 
 def start(update, context, is_back=False): #Metodo que se ejecuta cuando se activa el comando start
