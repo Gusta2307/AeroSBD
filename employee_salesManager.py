@@ -127,7 +127,7 @@ def save_data_owner_booking(update, context):
         update.callback_query.message.edit_text(text=msg[0], parse_mode = 'Markdown', reply_markup=msg[1])
         return EMPLOYEE_SALESMANAGER_INTO_DATA_OWNER
     elif query == "no" or query == "atras":
-        message = make_presell_menu()
+        message = make_prebooking_salesManager_refresh_menu(context)
         update.callback_query.message.edit_text(text=message[0], parse_mode = 'Markdown', reply_markup=message[1])
         return EMPLOYEE_SALESMANAGER_SELLPASAJE
     else:
