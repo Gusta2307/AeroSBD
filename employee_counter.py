@@ -6,7 +6,7 @@ from telegram import InlineQueryResultArticle, InputTextMessageContent, User
 from tags import *
 from all_menu import *
 from update_table import *
-from buttons import *
+from main import *
 
 #employee_counter
 
