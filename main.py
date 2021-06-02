@@ -52,7 +52,7 @@ elif mode == "prod":
         PORT = int(os.environ.get("PORT", "8443"))
         HEROKU_APP_NAME = os.environ.get("HEROKU_APP_NAME")
         updater.start_webhook(listen="0.0.0.0", port=PORT, url_path=TOKEN)
-        updater.bot.set_webhook("https://{HEROKU_APP_NAME}.herokuapp.com/{TOKEN}")
+        updater.bot.set_webhook(f"https://{HEROKU_APP_NAME}.herokuapp.com/{TOKEN}")
 
 def start(update, context, is_back=False): #Metodo que se ejecuta cuando se activa el comando start
     #Comprobamos si el usuario ya esta registrado en el bot 
