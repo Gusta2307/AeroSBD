@@ -5,6 +5,7 @@ from telegram import InlineQueryResultArticle, InputTextMessageContent, User, Ca
 
 from all_menu import *
 from tags import *
+from buttons import *
 
 #employee_exitDoor
 

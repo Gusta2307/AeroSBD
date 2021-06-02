@@ -6,6 +6,7 @@ from telegram import InlineQueryResultArticle, InputTextMessageContent, User, Ca
 from all_menu import *
 from tags import *
 from insert_table import *
+from buttons import *
 
 #employee_warehouseManager
 

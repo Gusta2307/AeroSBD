@@ -9,6 +9,7 @@ from all_menu import *
 from tags import *
 from insert_table import *
 from delete_table import *
+from buttons import *
 
 def employee_human_resources_options_callback_query(update, context):
     query = update.callback_query.data
