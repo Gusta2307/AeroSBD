@@ -695,7 +695,7 @@ def asd(bot, update):
             msg = employee_installation_purchases_refresh_menu(update)
         else:
             update.user_data['ID_P'] = update.user_data['list_pr'][int(bot.to_dict()['chosen_inline_result']['result_id'])][0]
-            msg = employee_installation_wareHouse_info_prod_menu(select_product(update.user_data['ID_P'])[0])
+            msg = employee_installation_wareHouse_info_prod_menu(select_product(update.user_data['ID_P'])[0], select_id_installation_employee(bot.effective_user['id'])[0])
     elif query.startswith(".np"):
         update.user_data['No_P'] = update.user_data['list_np'][int(bot.to_dict()['chosen_inline_result']['result_id'])][0]
         msg = pasaje_futuro_menu()

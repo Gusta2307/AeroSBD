@@ -520,7 +520,7 @@ def employee_installation_wareHouse_info_prod_menu(item):
     msg = "ID: "+str(item[0])
     msg += "\nNombre: "+item[1]
     msg += "\nCantidad: "+str(item[3])
-    msg += "\nPrecio: "+srt(item[2])
+    msg += "\nPrecio: "+str(item[2])
     button_list = []
     button_list.append(telegram.InlineKeyboardButton("Atras", callback_data="atras"))
     button_list.append(telegram.InlineKeyboardButton("Cancelar", callback_data="cancelar"))

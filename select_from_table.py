@@ -1652,12 +1652,12 @@ def select_all_product_employee_inst(id_I, id_AeroP):
     return result 
 
 #Empleado de instalacion: Obtener datos de un producto
-def select_product(id_Prod):
+def select_product(id_Prod, id_I):
     command = (
         f""" 
-        SELECT ID_Prod, Name_Prod, Cost_Prod
-        FROM Product
-        WHERE ID_Prod = \'{id_Prod}\'
+        SELECT ID_Prod, Name_Prod, Cost_Prod, Count_Prod
+        FROM Product INNER JOIN Product_Installation USING(ID_Prod)
+        WHERE ID_I = \'{id_I}\' AND ID_AeroP = \'{id_AeroP}\'
         """,)
     
     conn = None
