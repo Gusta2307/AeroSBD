@@ -811,6 +811,7 @@ def main():
     create_tables()
     insert_all_data()
 
+
     run(update)
 
 if __name__ == "__main__":
