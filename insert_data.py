@@ -896,6 +896,20 @@ def insert_date_data():
     ('2009-07-15 12:45'),
     ('2015-05-05 09:30'), 
     ('2015-05-05  12:45'),
+    ('2021-12-08 9:00'),
+    ('2021-11-07 4:30'),
+    ('2021-04-09 11:30'),
+    ('2021-08-18 1:00'),
+    ('2021-10-01 12:15'),
+    ('2021-10-01 8:30')
+    ('2021-05-01 5:00'),
+    ('2021-02-01 7:00'),
+    ('2021-04-09 12:00'),
+    ('2021-10-09 1:00'),
+    ('2021-07-27 3:00'),
+    ('2021-08-04 11:00'),
+    ('2021-09-02 5:45'), 
+    ('2021-05-29 01:30'),
     ('2007-01-14'),  
     ('2008-02-14'), 
     ('2010-03-02'), 
@@ -1083,9 +1097,7 @@ def insert_employee_data():
     ('Osiel',	                'Fdez Navarro',	        'Mexico',	    38188,	    \'\',	    'Empleado de Mostrador',                69395107729, \'9\', NULL),
     ('Teresa',	                'Súarez Gálvez',	    'Mexico',	    89131,	    \'\',	    'Empleado de Instalacion',              39885295897, \'2\', 3),
     ('Roman',	                'Mario Valdés',	        'Mexico',	    85869,	    \'\',	    'Empleado de Instalacion',              50497404989, \'17\', 10),
-    ('Jorge',                   'Carnot Pereira',	    'Panama',       30538,      \'\',	    'Empleado de Mostrador',                53790877336, \'1\', NULL),
-    ('GDD',                     'MC',                   'Cuba',         716780131, \'\',       'employee_humanResources',             99, 10, 18),
-    ('Sheila',                     'MC',                   'Cuba',         937372768, \'\',       'employee_flightOperator',             99, 10, 18);
+    ('Jorge',                   'Carnot Pereira',	    'Panama',       30538,      \'\',	    'Empleado de Mostrador',                53790877336, \'1\', NULL);
     """
     conn = None
     try:
