@@ -333,7 +333,7 @@ def insert_airplane(Enrollment, Clasif, Capacity):
             conn.close()
 
 
-def insert_buy(ID_Prod, Count_Prod, ID_I, ID_AeroP):
+def insert_buy(ID_Prod, Count_Prod, ID_I, ID_AeroP, cant_exits):
     query = """INSERT INTO Buy(Date_Buy) 
             VALUES(CURRENT_TIMESTAMP)
             """
@@ -341,12 +341,18 @@ def insert_buy(ID_Prod, Count_Prod, ID_I, ID_AeroP):
             VALUES(%s, %s, %s, %s, %s)
             """
     
+    query2 = 
+        f"""
+            UPDATE Product_Installation SET Count_Prod = %s WHERE ID_AeroP = %s AND ID_I = %s AND ID_Prod = %s
+        """
+
     try:
         conn = psycopg2.connect(DATABASE_URL, sslmode='require')
         cur = conn.cursor()
         cur.execute(query, )
         ID_Buy = select_the_last_buy()[0][0]
         cur.execute(query1, (ID_Prod, ID_Buy, Count_Prod, ID_I, ID_AeroP))
+        cur.execute(query2, (cant_exits - Count_Prod, ID_AeroP, ID_I, ID_Prod))
         conn.commit()
         cur.close()
     except (Exception, psycopg2.DatabaseError) as error:

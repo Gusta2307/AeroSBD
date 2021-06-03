@@ -34,7 +34,11 @@ def employee_installation_purchases_callback_query(update, context):
         if context.user_data['codigo_prod'] == "" or context.user_data['cant_prod'] == "":
             context.bot.answer_callback_query(update.callback_query.id, text="🚫Todos los campos deben ser completados🚫")
             return EMPLOYEE_INSTALLATION_PURCHASES
-        insert_buy(context.user_data["codigo_prod"], context.user_data["cant_prod"], select_id_installation_employee(update.effective_user['id']), select_ID_A_employee_using_id_telegram(update.effective_user['id']))
+        cant_exits = select_cant_prod(select_ID_A_employee_using_id_telegram(update.effective_user['id']), select_id_installation_employee(update.effective_user['id']), context.user_data['codigo_prod'])
+        if cant_exits < context.user_data['cant_prod']:
+            context.bot.answer_callback_query(update.callback_query.id, text="🚫La cantidad intruducida es mayor a la existente.🚫")
+            return EMPLOYEE_INSTALLATION_PURCHASES
+        insert_buy(context.user_data["codigo_prod"], context.user_data["cant_prod"], select_id_installation_employee(update.effective_user['id']), select_ID_A_employee_using_id_telegram(update.effective_user['id'], cant_exits))
         msg = "✅ Usted ha realizado satisfactoriamente la compra ✅"
         update.callback_query.message.delete()
         update.callback_query.message.chat.send_message(text=msg, parse_mode = 'Markdown')

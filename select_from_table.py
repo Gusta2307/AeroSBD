@@ -1914,4 +1914,28 @@ def select_repair_type():
     
     return result 
 
+def select_cant_prod(ID_A, ID_I, Cod_Prod):
+    command = (
+    f""" 
+        SELECT Count_Prod
+        FROM Product INNER JOIN Product_Installation USING(ID_Prod)
+        WHERE ID_I = \'{ID_I}\' AND ID_AeroP = \'{ID_A}\' AND ID_Prod = \'{Cod_Prod}\'
+    """,)
+    
+    conn = None
+    result = None
+    try:
+        # connect to the PostgreSQL server
+        conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+        cur = conn.cursor()
+        cur.execute(command[0])
+        result = cur.fetchone()
+        # close communication with the PostgreSQL database server
+        cur.close()
+    except (Exception, psycopg2.DatabaseError) as error:
+        print(error)
+    finally:
+        if conn is not None:
+            conn.close()
 
+    return result 
