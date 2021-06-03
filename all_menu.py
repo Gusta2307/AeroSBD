@@ -174,7 +174,7 @@ def into_data_pasajero_client_menu(context):
     button_list.append(telegram.InlineKeyboardButton("Pais", callback_query="pais", switch_inline_query_current_chat=".pp "))
     button_list.append(telegram.InlineKeyboardButton("No_pasaporte", callback_data="no_pasaporte"))
     button_list.append(telegram.InlineKeyboardButton("Guardar", callback_data="guardar"))
-    button_list.append(telegram.InlineKeyboardButton("Atras", callback_data="atras"))
+    #button_list.append(telegram.InlineKeyboardButton("Atras", callback_data="atras"))
     button_list.append(telegram.InlineKeyboardButton("Cancelar", callback_data="cancel"))
     reply_markup = telegram.InlineKeyboardMarkup(build_menu(button_list, n_cols=1))
     return [msg,reply_markup]  
