@@ -1657,7 +1657,7 @@ def select_product(id_Prod, id_I):
         f""" 
         SELECT ID_Prod, Name_Prod, Cost_Prod, Count_Prod
         FROM Product INNER JOIN Product_Installation USING(ID_Prod)
-        WHERE ID_I = \'{id_I}\' AND ID_AeroP = \'{id_AeroP}\'
+        WHERE ID_I = \'{id_I}\' AND ID_I = \'{id_I}\'
         """,)
     
     conn = None
