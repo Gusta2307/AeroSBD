@@ -508,7 +508,7 @@ def employee_installation_purchases_refresh_menu(context):
     return [msg,reply_markup]
 
 def employee_installation_wareHouse_menu():
-    msg = "Que producto desea revisar?."
+    msg = "Que producto desea revisar?"
     button_list = []
     button_list.append(telegram.InlineKeyboardButton("Productos", switch_inline_query_current_chat=".pr "))
     button_list.append(telegram.InlineKeyboardButton("Atras", callback_data="atras"))
