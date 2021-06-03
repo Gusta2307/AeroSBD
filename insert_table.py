@@ -37,13 +37,6 @@ def insert_client(update, context):
     id_telegram = update._effective_chat['id']
     no_passport = context.user_data["no_passport"]
 
-    print("INSERT CLIENT")    
-    print(name)
-    print(last_name)
-    print(country)
-    print(id_telegram)
-    print(no_passport)
-
     is_client = contains_client(str(no_passport))
     if is_client != []:
         if is_client[0][1] != None:
@@ -84,14 +77,12 @@ def insert_client_booking(data):
         finally:
             if conn is not None:
                 conn.close()
-    print("SALI INSERT CLIENT")
 
 def insert_employee(update, context):
     name = context.user_data["name_employee"]
     last_name = context.user_data["last_name_employee"]
     country = context.user_data["country"]
     verification_code = context.user_data["verif_code"]
-    #id_telegram = update._effective_chat.id
     job = context.user_data["job"]
     dni = context.user_data["dni_employee"]
     id_i = context.user_data["ID_I"]
@@ -135,13 +126,13 @@ def insert_flight_datas(cod_F, id_A, enrollment, loc_O, aero_S, fh_S, loc_D, aer
 
 # registrar los datos de la prereserva
 def insert_booking_datas(id_C, id_F, client_list):
-    print("INSERT")
-    print("id_C")
-    print(id_C)
-    print("id_F")
-    print(id_F)
-    print("client_list")
-    print(client_list)
+    now = datetime.now()
+
+    query3 = f"""
+        INSERT INTO date (Date_Begin) 
+        VALUES (\'{now}\')
+    """
+
     query1 = """INSERT INTO Booking (ID_C, ID_F, Date_booking, IS_paid) 
             VALUES (%s, %s, CURRENT_TIMESTAMP, 0);
         """
@@ -152,6 +143,9 @@ def insert_booking_datas(id_C, id_F, client_list):
     try:
         conn = psycopg2.connect(DATABASE_URL, sslmode='require')
         cur = conn.cursor()
+        cur.execute(query1,)
+        conn.commit()
+
         cur.execute(query1, (id_C, id_F))
         ID_B = select_the_last_booking()
         for client in client_list:
@@ -165,7 +159,6 @@ def insert_booking_datas(id_C, id_F, client_list):
     finally:
         if conn is not None:
             conn.close()
-    print("SALIO INSERT BOOKING")
 
 # registrar reparacion a una nave
 def insert_nave_repair(cod_R, enrollment, tipo_R):
@@ -264,7 +257,6 @@ def insert_apply_repair_repair(Enrollment, Cod_R, Days, ID_AeroP, ID_I):
         conn.commit()
         cur.execute(query2,)
         conn.commit()
-        print("MMMMMMMM")
         cur.execute(query, (Enrollment, Cod_R, 0, ID_AeroP, ID_I))
         conn.commit()
         cur.close()

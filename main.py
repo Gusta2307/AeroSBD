@@ -123,7 +123,6 @@ def cancel(update, context):
 
 def inline(bot, update):
     query = bot.inline_query.query
-    print(bot.inline_query.id)
     id = bot.inline_query.id
     index = 0
     resultados = list()
@@ -293,9 +292,7 @@ def inline(bot, update):
             text = query.replace(".fsgv", "").strip()
         elif query.startswith(".fs"):
             text = query.replace(".fs", "").strip()
-        print("A")
         list_date_go = select_date_go(update)
-        print("B")
         list_data_go_temp = []
         if text != "":
             for item in list_date_go:
@@ -317,7 +314,6 @@ def inline(bot, update):
             )
             index += 1
         update.user_data['list_date_go'] = list_data_go_temp
-        print(list_data_go_temp)
         #update.bot.answerInlineQuery(bot.inline_query.id, results=resultados, cache_time=1)
     elif query.startswith(".ldgv") or query.startswith(".ld") :
         #resultados = list()

@@ -92,10 +92,10 @@ def data_client_refresh(msg, context):
         msg += f"\n Apellidos: {context.user_data['last_name']}"
 
     if context.user_data['country'] != "":
-        msg += f"\n Country: {context.user_data['country']}"
+        msg += f"\n Pais: {context.user_data['country']}"
     
     if context.user_data['no_passport'] != "":
-        msg += f"\n NoPassport: {context.user_data['no_passport']}"
+        msg += f"\n No Pasaporte: {context.user_data['no_passport']}"
     
     return msg
 
@@ -283,7 +283,7 @@ def save_passeger_client_callback_query(update, context):
         if context.user_data['index'] > context.user_data['cant_pasajes']:
             for item in context.user_data['all_passeger']:
                 insert_client_booking(item)
-            #context.user_data['all_passeger'].append(None,None,None,select_ID_client_using_id_telegram(update.effective_user['id'])[0][0])
+
             id_c = select_ID_client_using_id_telegram(update.effective_user['id'])[0][0]
             id_f = select_ID_Flight(context.user_data["origen"], context.user_data["destino"], context.user_data["aerolinea"], context.user_data["fecha"])[0][0]
             client_list = [item[3] for item in context.user_data['all_passeger']]
@@ -299,7 +299,10 @@ def save_passeger_client_callback_query(update, context):
         update.callback_query.message.edit_text(text=msg[0], parse_mode = 'Markdown', reply_markup=msg[1])
         return CLIENT_INTO_DATA_PASS
     elif query == "no" or query == "atras":
-        return new_client_callback_query(update, context)
+        msg = into_data_pasajero_client_menu(context)
+        msg[0] = data_passeger_client_refresh(msg[0], context)
+        update.message.bot.edit_message_text(chat_id=update.message.chat_id, message_id=context.user_data['message_id'], text=msg[0], parse_mode = 'Markdown', reply_markup=msg[1])
+        return CLIENT_INTO_DATA_PASS
     else:
         return cancel(update, context)
 
@@ -355,19 +358,19 @@ def client_cant_pasajeros_message_text(update, context):
 
 def data_client_prebooking_refresh(msg, context):
     if context.user_data['cant_pasajes'] != "":
-        msg += f"\n Cantidad de Reservas: {context.user_data['cant_pasajes']}"
+        msg += f"\nCantidad de Reservas: {context.user_data['cant_pasajes']}"
 
     if context.user_data['origen'] != "":
-        msg += f"\n Lugar de Origen: {select_name_aeroport(context.user_data['origen'])[0][0]}"
+        msg += f"\nLugar de Origen: {select_name_aeroport(context.user_data['origen'])[0][0]}"
 
     if context.user_data['destino'] != "":
-        msg += f"\n Lugar de Destino: {select_name_aeroport(context.user_data['destino'])[0][0]}"
+        msg += f"\nLugar de Destino: {select_name_aeroport(context.user_data['destino'])[0][0]}"
 
     if context.user_data['aerolinea'] != "":
-        msg += f"\n Aerolinea: {select_name_aeroline(context.user_data['aerolinea'])[0][0]}"
+        msg += f"\nAerolinea: {select_name_aeroline(context.user_data['aerolinea'])[0][0]}"
 
     if context.user_data['fecha'] != "":
-        msg += f"\n Fecha de Salida: {context.user_data['fecha']}"
+        msg += f"\nFecha de Salida: {context.user_data['fecha']}"
     return msg
 
 def initialize_client_prebooking(context):

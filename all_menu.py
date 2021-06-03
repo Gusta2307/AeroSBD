@@ -92,7 +92,7 @@ def client_registration_menu(name):
     button_list.append(telegram.InlineKeyboardButton("Nombre", callback_data="nombre", show_alert=True))
     button_list.append(telegram.InlineKeyboardButton("Apellidos", callback_data="apellidos"))
     button_list.append(telegram.InlineKeyboardButton("Pais", callback_query="pais", switch_inline_query_current_chat=".pc "))
-    button_list.append(telegram.InlineKeyboardButton("No_pasaporte", callback_data="no_pasaporte"))
+    button_list.append(telegram.InlineKeyboardButton("No Pasaporte", callback_data="no_pasaporte"))
     button_list.append(telegram.InlineKeyboardButton("Guardar", callback_data="guardar"))
     button_list.append(telegram.InlineKeyboardButton("Atras", callback_data="atras"))
     button_list.append(telegram.InlineKeyboardButton("Cancelar", callback_data="cancel"))
@@ -102,22 +102,22 @@ def client_registration_menu(name):
 def client_registration_refresh_menu(name, context):
     msg = f"{name}, Por favor ingrese sus datos personales para registrarse en el bot. \n"
     if context.user_data['name'] != "":
-        msg += f"\n Nombre: {context.user_data['name']}"
+        msg += f"\nNombre: {context.user_data['name']}"
 
     if context.user_data['last_name'] != "":
-        msg += f"\n Apellidos: {context.user_data['last_name']}"
+        msg += f"\nApellidos: {context.user_data['last_name']}"
 
     if context.user_data['country'] != "":
-        msg += f"\n Country: {context.user_data['country']}"
+        msg += f"\nPais: {context.user_data['country']}"
 
     if context.user_data['no_passport'] != "":
-        msg += f"\n NoPassport: {context.user_data['no_passport']}"
+        msg += f"\nNo Pasaporte: {context.user_data['no_passport']}"
     
     button_list = []
     button_list.append(telegram.InlineKeyboardButton("Nombre", callback_data="nombre", show_alert=True))
     button_list.append(telegram.InlineKeyboardButton("Apellidos", callback_data="apellidos"))
     button_list.append(telegram.InlineKeyboardButton("Pais", callback_query="pais", switch_inline_query_current_chat=".pc "))
-    button_list.append(telegram.InlineKeyboardButton("No_pasaporte", callback_data="no_pasaporte"))
+    button_list.append(telegram.InlineKeyboardButton("No Pasaporte", callback_data="no_pasaporte"))
     button_list.append(telegram.InlineKeyboardButton("Guardar", callback_data="guardar"))
     button_list.append(telegram.InlineKeyboardButton("Atras", callback_data="atras"))
     button_list.append(telegram.InlineKeyboardButton("Cancelar", callback_data="cancel"))
@@ -172,7 +172,7 @@ def into_data_pasajero_client_menu(context):
     button_list.append(telegram.InlineKeyboardButton("Nombre", callback_data="nombre"))
     button_list.append(telegram.InlineKeyboardButton("Apellidos", callback_data="apellidos"))
     button_list.append(telegram.InlineKeyboardButton("Pais", callback_query="pais", switch_inline_query_current_chat=".pp "))
-    button_list.append(telegram.InlineKeyboardButton("No_pasaporte", callback_data="no_pasaporte"))
+    button_list.append(telegram.InlineKeyboardButton("No Pasaporte", callback_data="no_pasaporte"))
     button_list.append(telegram.InlineKeyboardButton("Guardar", callback_data="guardar"))
     #button_list.append(telegram.InlineKeyboardButton("Atras", callback_data="atras"))
     button_list.append(telegram.InlineKeyboardButton("Cancelar", callback_data="cancel"))
@@ -185,7 +185,7 @@ def into_data_owner_client_menu(context):
     button_list.append(telegram.InlineKeyboardButton("Nombre", callback_data="nombre"))
     button_list.append(telegram.InlineKeyboardButton("Apellidos", callback_data="apellidos"))
     button_list.append(telegram.InlineKeyboardButton("Pais", callback_query="pais", switch_inline_query_current_chat=".po "))
-    button_list.append(telegram.InlineKeyboardButton("No_pasaporte", callback_data="no_pasaporte"))
+    button_list.append(telegram.InlineKeyboardButton("No Pasaporte", callback_data="no_pasaporte"))
     button_list.append(telegram.InlineKeyboardButton("Guardar", callback_data="guardar"))
     button_list.append(telegram.InlineKeyboardButton("Atras", callback_data="atras"))
     button_list.append(telegram.InlineKeyboardButton("Cancelar", callback_data="cancel"))
@@ -214,22 +214,22 @@ def employee_facilitiesSupervisor_add_refresh_menu(context):
 def into_data_pasajero_refresh_client_menu(context):
     msg = f"Por favor introduzca los datos del pasajero {context.user_data['index']}"
     if context.user_data['passeger_name'] != "":
-        msg += f"\n Nombre: {context.user_data['passeger_name']}"
+        msg += f"\nNombre: {context.user_data['passeger_name']}"
 
     if context.user_data['passeger_last_name'] != "":
-        msg += f"\n Apellidos: {context.user_data['passeger_last_name']}"
+        msg += f"\nApellidos: {context.user_data['passeger_last_name']}"
 
     if context.user_data['passeger_country'] != "":
-        msg += f"\n Country: {context.user_data['passeger_country']}"
+        msg += f"\nPais: {context.user_data['passeger_country']}"
 
     if context.user_data['passeger_no_passport'] != "":
-        msg += f"\n NoPassport: {context.user_data['passeger_no_passport']}"
+        msg += f"\nNo Pasaporte: {context.user_data['passeger_no_passport']}"
 
     button_list = []
     button_list.append(telegram.InlineKeyboardButton("Nombre", callback_data="nombre"))
     button_list.append(telegram.InlineKeyboardButton("Apellidos", callback_data="apellidos"))
     button_list.append(telegram.InlineKeyboardButton("Pais", callback_query="pais", switch_inline_query_current_chat=".pp "))
-    button_list.append(telegram.InlineKeyboardButton("No_pasaporte", callback_data="no_pasaporte"))
+    button_list.append(telegram.InlineKeyboardButton("No Pasaporte", callback_data="no_pasaporte"))
     button_list.append(telegram.InlineKeyboardButton("Guardar", callback_data="guardar"))
     button_list.append(telegram.InlineKeyboardButton("Atras", callback_data="atras"))
     button_list.append(telegram.InlineKeyboardButton("Cancelar", callback_data="cancel"))
@@ -239,21 +239,21 @@ def into_data_pasajero_refresh_client_menu(context):
 def into_data_owner_refresh_client_menu(context):
     msg = f"Por favor introduzca los datos de la persona a nombre de quien va a estar la reserva "
     if context.user_data['owner_name'] != "":
-        msg += f"\n Nombre: {context.user_data['owner_name']}"
+        msg += f"\nNombre: {context.user_data['owner_name']}"
 
     if context.user_data['owner_last_name'] != "":
-        msg += f"\n Apellidos: {context.user_data['owner_last_name']}"
+        msg += f"\nApellidos: {context.user_data['owner_last_name']}"
 
     if context.user_data['owner_country'] != "":
-        msg += f"\n Country: {context.user_data['owner_country']}"
+        msg += f"\nPais: {context.user_data['owner_country']}"
 
     if context.user_data['owner_no_passport'] != "":
-        msg += f"\n NoPassport: {context.user_data['owner_no_passport']}"
+        msg += f"\nNo Pasaporte: {context.user_data['owner_no_passport']}"
     button_list = []
     button_list.append(telegram.InlineKeyboardButton("Nombre", callback_data="nombre"))
     button_list.append(telegram.InlineKeyboardButton("Apellidos", callback_data="apellidos"))
     button_list.append(telegram.InlineKeyboardButton("Pais", callback_query="pais", switch_inline_query_current_chat=".po "))
-    button_list.append(telegram.InlineKeyboardButton("No_pasaporte", callback_data="no_pasaporte"))
+    button_list.append(telegram.InlineKeyboardButton("No Pasaporte", callback_data="no_pasaporte"))
     button_list.append(telegram.InlineKeyboardButton("Guardar", callback_data="guardar"))
     button_list.append(telegram.InlineKeyboardButton("Atras", callback_data="atras"))
     button_list.append(telegram.InlineKeyboardButton("Cancelar", callback_data="cancel"))
@@ -391,7 +391,7 @@ def employee_add_refresh_menu(context):
     if context.user_data['dni_employee'] != "":
         msg += f"\nCarnet: {context.user_data['dni_employee']}"
     if context.user_data['country'] != "":
-        msg += f"\nCountry: {context.user_data['country']}"
+        msg += f"\Pais: {context.user_data['country']}"
     if context.user_data['job'] != "":
         msg += f"\nCargo: {context.user_data['job']}"
     if context.user_data["ID_I"] != "":
@@ -452,7 +452,6 @@ def employee_warehouseManager_add_prod_menu():
     return [msg,reply_markup]
 
 def employee_humanResources_info_menu(item):
-    print(item)
     msg = "Informacion del empleado\n"
     msg += "ID de Empleado: " + str(item[2]) + '\n' 
     msg += "No de Carnet: " + str(item[4]) + '\n' 
