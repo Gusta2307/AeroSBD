@@ -345,8 +345,10 @@ def insert_buy(ID_Prod, Count_Prod, ID_I, ID_AeroP, cant_exits):
         conn = psycopg2.connect(DATABASE_URL, sslmode='require')
         cur = conn.cursor()
         cur.execute(query, )
+        conn.commit()
         ID_Buy = select_the_last_buy()[0][0]
         cur.execute(query1, (ID_Prod, ID_Buy, Count_Prod, ID_I, ID_AeroP))
+        conn.commit()
         cur.execute(query2, (str(cant_exits - int(Count_Prod)), ID_AeroP, ID_I, ID_Prod))
         conn.commit()
         cur.close()
