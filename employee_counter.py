@@ -18,7 +18,7 @@ def employee_counter_callback_query(update, context):
             update.callback_query.message.edit_text(text=msg[0], parse_mode = 'Markdown', reply_markup=msg[1])
             return EMPLOYEE_COUNTER
         elif query[1] == "2":
-            msg = employee_counter_menu1(update.effective_user['first_name'])
+            msg = employee_counter_menu2(update.effective_user['first_name'])
             update.callback_query.message.edit_text(text=msg[0], parse_mode = 'Markdown', reply_markup=msg[1])
             return EMPLOYEE_COUNTER
     elif query[0] == "cantMaletas":
