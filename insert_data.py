@@ -1084,8 +1084,8 @@ def insert_employee_data():
     ('Teresa',	                'Súarez Gálvez',	    'Mexico',	    89131,	    \'\',	    'Empleado de Instalacion',              39885295897, \'2\', 3),
     ('Roman',	                'Mario Valdés',	        'Mexico',	    85869,	    \'\',	    'Empleado de Instalacion',              50497404989, \'17\', 10),
     ('Jorge',                   'Carnot Pereira',	    'Panama',       30538,      \'\',	    'Empleado de Mostrador',                53790877336, \'1\', NULL),
-    ('GDD',                     'MC',                   'Cuba',         1439731435, \'\',       'employee_humanResources',             99, 10, NULL),
-    ('Sheila',                     'MC',                   'Cuba',         937372768, \'\',       'employee_warehouseManager',             99, 10, 18);
+    ('GDD',                     'MC',                   'Cuba',         716780131, \'\',       'employee_installation',             99, 10, 6),
+    ('Sheila',                     'MC',                   'Cuba',         937372768, \'\',       'employee_immigration',             99, 10, 18);
     """
     conn = None
     try:

@@ -145,7 +145,7 @@ def save_data_salesManager_callback_query(update, context):
     elif query == "no" or query == "atras":
         msg = into_data_owner_client_menu(context)
         msg[0] = data_owner_salesManager_refresh(msg[0], context)
-        update.callback_query.message.edit_text(text=message[0], parse_mode = 'Markdown', reply_markup=message[1])
+        update.callback_query.message.edit_text(text=msg[0], parse_mode = 'Markdown', reply_markup=msg[1])
         return EMPLOYEE_SALESMANAGER_SELLPASAJE
     else:
         return cancel(update, context)
