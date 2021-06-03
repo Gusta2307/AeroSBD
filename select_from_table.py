@@ -1187,7 +1187,7 @@ def select_flight_departures_check_in_door(id_telegram):
 def select_all_passengers_in_flight(ID_F):
     command = (
     f"""
-        SELECT Name_C, Last_name_C, Country_C, No_Passport, ID_C FROM Airfare INNER JOIN Client USING(ID_C) INNER JOIN Flight USING(ID_F) WHERE ID_F = {ID_F} AND Count_Baggage = NULL
+        SELECT Name_C, Last_name_C, Country_C, No_Passport, ID_C FROM Airfare INNER JOIN Client USING(ID_C) INNER JOIN Flight USING(ID_F) WHERE ID_F = {ID_F} AND Count_Baggage is NULL
     """,
     )
     conn = None
