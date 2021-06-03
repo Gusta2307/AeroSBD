@@ -268,8 +268,10 @@ def save_passeger_salesManager_callback_query(update, context): #REVISAR BIEN
         update.callback_query.message.edit_text(text=msg[0], parse_mode = 'Markdown', reply_markup=msg[1])
         return EMPLOYEE_SALESMANAGER_INTO_DATA_PASS
     elif query == "no" or query == "atras":
-        pass
-        #return new_client_callback_query(update, context)
+        msg = into_data_pasajero_client_menu(context)
+        msg[0] = data_passeger_salesManager_refresh(msg[0], context)
+        update.callback_query.message.bot.edit_text(text=msg[0], parse_mode = 'Markdown', reply_markup=msg[1])
+        return EMPLOYEE_SALESMANAGER_INTO_DATA_PASS
     else:
         return cancel(update, context)
 
