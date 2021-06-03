@@ -143,7 +143,7 @@ def insert_booking_datas(id_C, id_F, client_list):
     try:
         conn = psycopg2.connect(DATABASE_URL, sslmode='require')
         cur = conn.cursor()
-        cur.execute(query1,)
+        cur.execute(query3,)
         conn.commit()
 
         cur.execute(query1, (id_C, id_F))
