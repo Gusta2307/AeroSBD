@@ -1381,7 +1381,7 @@ def select_airplane_repairs(enrollment, id_AeroP, id_I):
               INNER JOIN Client USING(ID_C)
         """,
         f"""
-        SELECT Enrollment, Date_Begin, Date_End, Type_RR, P3.Cost_R, repair.Cost_R as Cost_R1 , Monto_Total, ID_AeroP, Type_R as Typ_R1, Time, Cod_R1, ID_I
+        SELECT Enrollment, Date_Begin, Date_End, Type_RR, P3.Cost_R, repair.Cost_R as Cost_R1 , Monto_Total + Cost_R1 , ID_AeroP, Type_R as Typ_R1, Time, Cod_R1, ID_I
         FROM(SELECT Enrollment, Date_Begin, Date_End, Type_R as Type_RR, Cost_R, SUM(Cost_R) as Monto_Total, ID_AeroP, Cod_R1, Time, ID_I
              FROM(SELECT Enrollment, Date_Begin, Date_End, Type_R, Cost_R, Cod_R, ID_AeroP, Cod_R1, Time, ID_I
                   FROM(SELECT Cod_R, Cod_R1, Type_R, Cost_R

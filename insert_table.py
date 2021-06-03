@@ -242,10 +242,6 @@ def insert_apply_repair_repair(Enrollment, Cod_R, Days, ID_AeroP, ID_I):
     # fecha actual
     now = datetime.now()
     begin = now + timedelta(days=-int(Days))
-    #query1 = f"""
-    #        INSERT INTO date (Date_Begin) 
-    #        SELECT \'{now}\' WHERE NOT EXISTS (SELECT Date_Begin FROM Date);
-    #"""
 
     query1 = f"""
             INSERT INTO date (Date_Begin) 
@@ -256,11 +252,6 @@ def insert_apply_repair_repair(Enrollment, Cod_R, Days, ID_AeroP, ID_I):
         INSERT INTO date (Date_Begin) 
         VALUES (\'{begin}\')
     """
-
-    #query2 = f"""
-    #        INSERT INTO date (Date_Begin)
-    #        SELECT \'{begin}\' WHERE NOT EXISTS (SELECT Date_Begin FROM Date);
-    #"""
 
     query = f"""INSERT INTO Apply_Repair(Enrollment, Cod_R, Date_Begin, Date_End, Time, ID_AeroP, ID_I) 
                VALUES(%s, %s, \'{begin}\', \'{now}\', %s, %s, %s)
