@@ -1281,8 +1281,8 @@ def insert_airfare_data():
     query = \
     """
     INSERT INTO Airfare(ID_C, ID_F, Count_Baggage) VALUES
-    (1, 12, 4),
-    (2, 12, 4),
+    (1, 12, NULL),
+    (2, 12, NULL),
     (3, 1, 2),
     (4, 1, 1),
     (18, 1, 1),

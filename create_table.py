@@ -260,7 +260,7 @@ def create_tables():
         CREATE TABLE IF NOT EXISTS Airfare(
             ID_C INTEGER NOT NULL,
             ID_F INTEGER NOT NULL,
-            Count_Baggage INTEGER NULL,
+            Count_Baggage INTEGER,
             PRIMARY KEY(ID_C, ID_F),
             FOREIGN KEY (ID_C)
                 REFERENCES Client (ID_C)
