@@ -245,7 +245,7 @@ def insert_apply_repair_repair(Enrollment, Cod_R, Days, ID_AeroP, ID_I):
             INSERT INTO date (Date_Begin)
             SELECT {now} WHERE NOT EXISTS (SELECT Date_Begin FROM Date);
     """
-    begin = now + timedelta(days=-Days) 
+    begin = now + timedelta(days=-int(Days))
     query = f"""INSERT INTO Apply_Repair(Enrollment, Cod_R, Date_Begin, Date_End, Time, ID_AeroP, ID_I) 
                VALUES(%s, %s, {begin}, {now}, %s, %s, %s)
             """
