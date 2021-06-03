@@ -243,7 +243,7 @@ def insert_apply_repair_repair(Enrollment, Cod_R, Days, ID_AeroP, ID_I):
     now = str(datetime.now()).split('.')[0]
     query1 = f"""
             INSERT INTO date (Date_Begin)
-            SELECT timestamp {now} WHERE NOT EXISTS (SELECT Date_Begin FROM Date);
+            SELECT {now} WHERE NOT EXISTS (SELECT Date_Begin FROM Date);
     """
     begin = str(datetime.now() + timedelta(days=-int(Days))).split('.')
     query = f"""INSERT INTO Apply_Repair(Enrollment, Cod_R, Date_Begin, Date_End, Time, ID_AeroP, ID_I) 
