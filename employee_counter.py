@@ -26,7 +26,7 @@ def employee_counter_callback_query(update, context):
         return EMPLOYEE_COUNTER_MT
     elif query[0] == "check":
         if context.user_data["maletas"] == "":
-            context.bot.answer_callback_query(update.callback_query.id), text="🚫Debe introducir primero la cantidad de maletas.🚫")
+            context.bot.answer_callback_query(update.callback_query.id, text="🚫Debe introducir primero la cantidad de maletas.🚫")
             return EMPLOYEE_COUNTER
         airfare_update(context.user_data["ID_C"], context.user_data["ID_F"], context.user_data["maletas"])
         msg = "✅Se ha chequado satisfactoriamente al pasajero✅"
