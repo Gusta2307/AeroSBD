@@ -1,5 +1,7 @@
 import os
 import psycopg2
+from datetime import *  
+
 
 DATABASE_URL = os.environ.get("DATABASE_URL")
 
@@ -60,6 +62,7 @@ try:
     #cur.execute(sql, ("SAF", "MC", "Cuba", 937372768, "employee_salesManager", 99))
     #cur.execute(sql0,("employee_installation", 716780131))
     cur.execute(sql0,("employee_chiefMachanic", 937372768))
+    cur.execute(sql0,("employee_exitDoor", 716780131))
     #cur.execute("DELETE FROM Employee WHERE ID_Telegram_E = %s", (716780131,))
     # commit the changes to the database
     conn.commit()
@@ -72,6 +75,7 @@ finally:
         conn.close()
 
 print("AAAAAAAAAA")
+print(datetime.now() + timedelta(days=-1))
 
 #sql = """INSERT INTO Office(Office, Salary)
 #            VALUES(%s,%s)"""

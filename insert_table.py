@@ -239,13 +239,21 @@ def insert_passenger_in_Passenger_Flow(ID_C, ID_F, isAccepted_S):
             conn.close()
 
 def insert_apply_repair_repair(Enrollment, Cod_R, Days, ID_AeroP, ID_I):
+    # fecha actual
+    now = datetime.now()
+    query1 = f"""
+            INSERT INTO date (Date_Begin)
+            SELECT {now} WHERE NOT EXISTS (SELECT Date_Begin FROM Date);
+    """
+    begin = now + timedelta(days=-day)) 
     query = f"""INSERT INTO Apply_Repair(Enrollment, Cod_R, Date_Begin, Date_End, Time, ID_AeroP, ID_I) 
-               VALUES(%s, %s, CURRENT_DATE - INTERVAL \'{Days} hr\', CURRENT_DATE, %s, %s, %s)
+               VALUES(%s, %s, {begin}, {now}, %s, %s, %s)
             """
 
     try:
         conn = psycopg2.connect(DATABASE_URL, sslmode='require')
         cur = conn.cursor()
+        cur.execute(query1,)
         cur.execute(query, (Enrollment, Cod_R, 0, ID_AeroP, ID_I))
         conn.commit()
         cur.close()
@@ -272,25 +280,7 @@ def insert_installation(ID_AeroP, Name_I, Type):
         if conn is not None:
             conn.close()
 
-#def insert_apply_repair_repair(Enrollment, Cod_R, Date_Begin, Date_End, Time, ID_AeroP):
-#    query = """INSERT INTO Apply_Repair(Enrollment, Cod_R, Date_Begin, Date_End, Time, ID_AeroP) 
-#               VALUES(%s, %s, %s, %s, %s, %s)
-#            """
-#
-#    try:
-#        conn = psycopg2.connect(DATABASE_URL, sslmode='require')
-#        cur = conn.cursor()
-#        cur.execute(query, (Enrollment, Cod_R, Date_Begin, Date_End, Time, ID_AeroP))
-#        conn.commit()
-#        cur.close()
-#    except (Exception, psycopg2.DatabaseError) as error:
-#        print(error)
-#    finally:
-#        if conn is not None:
-#            conn.close()
     
-
-
 
 def insert_product(name, cost, count, ID_AeroP, ID_I):
     query = """INSERT INTO Product(Name_Prod, Cost_Prod) 
