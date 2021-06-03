@@ -98,7 +98,7 @@ def create_tables():
             IS_paid INTEGER NOT NULL,
             FOREIGN KEY (Date_booking)
                 REFERENCES Date (Date_booking)
-                ON UPDATE CASCADE ON DELETE CASCADE,
+                ON UPDATE CASCADE ON DELETE CASCADE
         )
         """,
         """
