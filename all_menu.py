@@ -776,7 +776,7 @@ def employee_chiefMachanic_add_repair_refresh_menu(context):
         msg += "\nTipo de reparacion: "+context.user_data['repair'][1]
         msg += "\nPrecio: "+str(context.user_data['repair'][2])
     if context.user_data['days'] != "":
-        msg += "\nDuracion: "+str(context.user_data['days'])+("dia" if int(context.user_data['days']) <= 1 else "dias")
+        msg += "\nDuracion: "+str(context.user_data['days'])+(" dia" if int(context.user_data['days']) <= 1 else " dias")
     button_list = []
     button_list.append(telegram.InlineKeyboardButton("Tipo de Reparacion", switch_inline_query_current_chat=".rp "))
     button_list.append(telegram.InlineKeyboardButton("Duracion", callback_data="duracion"))
