@@ -812,8 +812,8 @@ def main():
     dp.add_handler(InlineQueryHandler(inline, pass_user_data=True))
     dp.add_handler(ChosenInlineResultHandler(asd, pass_user_data=True))
 
-    #create_tables()
-    #insert_all_data()
+    create_tables()
+    insert_all_data()
 
     run(update)
 
