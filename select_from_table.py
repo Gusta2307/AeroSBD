@@ -244,6 +244,7 @@ def select_the_last_booking():
 
 # Cliente: Ver prereservas
 def select_client_booking(id_T):
+    print(id_T)
     command = (
         f"""
         SELECT ID_B, Date_booking, Cod_F, Name_A, COUNT(ID_B), Aero_S, Aero_L, Date_Hour_S, Date_Hour_L, Price
