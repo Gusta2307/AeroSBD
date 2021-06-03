@@ -263,8 +263,8 @@ def into_data_owner_refresh_client_menu(context):
 def prebooking_client_menu():
     msg = "Que desea hacer?"
     button_list = []
-    button_list.append(telegram.InlineKeyboardButton("Ver mis preservas", callback_data="ver_prereservas"))
-    button_list.append(telegram.InlineKeyboardButton("Realizar preserva", callback_data="realizar_prereserva"))
+    button_list.append(telegram.InlineKeyboardButton("Ver mis prereservas", callback_data="ver_prereservas"))
+    button_list.append(telegram.InlineKeyboardButton("Realizar prereserva", callback_data="realizar_prereserva"))
     button_list.append(telegram.InlineKeyboardButton("Atras", callback_data="atras"))
     button_list.append(telegram.InlineKeyboardButton("Cancelar", callback_data="cancelar"))
     reply_markup = telegram.InlineKeyboardMarkup(build_menu(button_list, n_cols=1))
