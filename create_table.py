@@ -102,7 +102,7 @@ def create_tables():
             Date_booking timestamp NOT NULL, 
             IS_paid INTEGER NOT NULL,
             FOREIGN KEY (Date_booking)
-                REFERENCES Date (Date_booking)
+                REFERENCES Date (Date_Begin)
                 ON UPDATE CASCADE ON DELETE CASCADE
         )
         """,
