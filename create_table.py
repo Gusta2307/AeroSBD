@@ -20,6 +20,11 @@ def create_tables():
         )
         """,
         """
+        CREATE TABLE IF NOT EXISTS Date(
+            Date_Begin timestamp PRIMARY KEY NOT NULL
+        )
+        """,
+        """
         CREATE TABLE IF NOT EXISTS Installation(
             ID_I SERIAL,
             ID_AeroP INTEGER NOT NULL,
@@ -142,11 +147,6 @@ def create_tables():
             FOREIGN KEY (Cod_R)
                 REFERENCES Repair (Cod_R)
                 ON UPDATE CASCADE ON DELETE CASCADE
-        )
-        """,
-        """
-        CREATE TABLE IF NOT EXISTS Date(
-            Date_Begin timestamp PRIMARY KEY NOT NULL
         )
         """,
         """
