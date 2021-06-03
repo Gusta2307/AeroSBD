@@ -147,10 +147,12 @@ def insert_booking_datas(id_C, id_F, client_list):
         conn.commit()
 
         cur.execute(query1, (id_C, id_F))
+        conn.commit()
         ID_B = select_the_last_booking()
         for client in client_list:
             id_c = select_ID_client_using_no_passport(client)
             cur.execute(query2, (ID_B[0][0], id_c[0][0]))
+            conn.commit()
 
         conn.commit()
         cur.close()
