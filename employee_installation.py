@@ -34,7 +34,7 @@ def employee_installation_purchases_callback_query(update, context):
         if context.user_data['codigo_prod'] == "" or context.user_data['cant_prod'] == "":
             context.bot.answer_callback_query(update.callback_query.id, text="🚫Todos los campos deben ser completados🚫")
             return EMPLOYEE_INSTALLATION_PURCHASES
-        cant_exits = select_cant_prod(select_ID_A_employee_using_id_telegram(update.effective_user['id'])[0], select_id_installation_employee(update.effective_user['id'])[0], context.user_data['codigo_prod'])
+        cant_exits = select_cant_prod(select_ID_A_employee_using_id_telegram(update.effective_user['id'])[0], select_id_installation_employee(update.effective_user['id'])[0], context.user_data['codigo_prod'])[0]
         print(cant_exits)
         if int(cant_exits) < int(context.user_data['cant_prod']):
             context.bot.answer_callback_query(update.callback_query.id, text="🚫La cantidad intruducida es mayor a la existente.🚫")
