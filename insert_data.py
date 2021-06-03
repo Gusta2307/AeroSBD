@@ -1424,6 +1424,7 @@ def insert_job():
             conn.close()
 
 def insert_all_data():
+    insert_date_data()
     insert_aeroport_data()
     insert_InstallationType_data()
     insert_installation_data()
@@ -1438,7 +1439,6 @@ def insert_all_data():
     insert_product_data()
     insert_repair_data()
     insert_need_repair_data()
-    insert_date_data()
     insert_product_installation_data()
     insert_employee_data()
     insert_aeroline_matric_data()
