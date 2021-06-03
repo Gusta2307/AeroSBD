@@ -341,7 +341,7 @@ def insert_buy(ID_Prod, Count_Prod, ID_I, ID_AeroP, cant_exits):
             VALUES(%s, %s, %s, %s, %s)
             """
     
-    query2 = 
+    query2 = \
         f"""
             UPDATE Product_Installation SET Count_Prod = %s WHERE ID_AeroP = %s AND ID_I = %s AND ID_Prod = %s
         """
