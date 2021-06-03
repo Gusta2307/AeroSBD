@@ -342,7 +342,7 @@ def insert_buy(ID_Prod, Count_Prod, ID_I, ID_AeroP, cant_exits):
             """
     
     query2 = \
-        f"""
+        """
             UPDATE Product_Installation SET Count_Prod = %s WHERE ID_AeroP = %s AND ID_I = %s AND ID_Prod = %s
         """
 
@@ -352,7 +352,6 @@ def insert_buy(ID_Prod, Count_Prod, ID_I, ID_AeroP, cant_exits):
         cur.execute(query, )
         ID_Buy = select_the_last_buy()[0][0]
         cur.execute(query1, (ID_Prod, ID_Buy, Count_Prod, ID_I, ID_AeroP))
-        print("KKKKKKKK")
         cur.execute(query2, (str(cant_exits - int(Count_Prod)), ID_AeroP, ID_I, ID_Prod))
         conn.commit()
         cur.close()
