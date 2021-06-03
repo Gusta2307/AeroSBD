@@ -107,10 +107,10 @@ def data_passeger_client_refresh(msg, context):
         msg += f"\n Apellidos: {context.user_data['passeger_last_name']}"
 
     if context.user_data['passeger_country'] != "":
-        msg += f"\n Country: {context.user_data['passeger_country']}"
+        msg += f"\n Pais: {context.user_data['passeger_country']}"
     
     if context.user_data['passeger_no_passport'] != "":
-        msg += f"\n NoPassport: {context.user_data['passeger_no_passport']}"
+        msg += f"\n No Pasaporte: {context.user_data['passeger_no_passport']}"
     
     return msg
 

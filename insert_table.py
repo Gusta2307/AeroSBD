@@ -133,7 +133,7 @@ def insert_booking_datas(id_C, id_F, client_list):
         VALUES (\'{now}\')
     """
 
-    query1 = """INSERT INTO Booking (ID_C, ID_F, Date_booking, IS_paid) 
+    query1 = f"""INSERT INTO Booking (ID_C, ID_F, Date_booking, IS_paid) 
             VALUES (%s, %s, \'{now}\', 0);
         """
     query2 = """INSERT INTO BookingTo (ID_B, ID_C) 
