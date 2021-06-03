@@ -1107,7 +1107,8 @@ def select_flight_departures(Id_T):
 def select_flight_enters(Id_T):
     command = (
     f"""
-        SELECT Cod_F, Enrollment, Name_A, Date_Hour_L, Aeroport_S FROM Flight INNER JOIN Aeroline USING(ID_A) INNER JOIN Flight_Matric USING(ID_F) WHERE Aeroport_L = (SELECT ID_AeroP 
+        SELECT Cod_F, Enrollment, Name_A, Date_Hour_L, Aeroport_S 
+        FROM Flight INNER JOIN Aeroline USING(ID_A) INNER JOIN Flight_Matric USING(ID_F) WHERE Aeroport_L = (SELECT ID_AeroP 
         FROM Employee WHERE ID_Telegram_E = \'{Id_T}\') AND Date_Hour_L BETWEEN  CURRENT_TIMESTAMP + INTERVAL '1 hr' and  CURRENT_DATE + INTERVAL '1 day'
         ORDER BY Date_Hour_L; 
     """,
@@ -1186,7 +1187,7 @@ def select_flight_departures_check_in_door(id_telegram):
 def select_all_passengers_in_flight(ID_F):
     command = (
     f"""
-        SELECT Name_C, Last_name_C, Country_C, No_Passport, ID_C FROM Airfare INNER JOIN Client USING(ID_C) INNER JOIN Flight USING(ID_F) WHERE ID_F = {ID_F}
+        SELECT Name_C, Last_name_C, Country_C, No_Passport, ID_C FROM Airfare INNER JOIN Client USING(ID_C) INNER JOIN Flight USING(ID_F) WHERE ID_F = {ID_F} AND Count_Baggage != NULL
     """,
     )
     conn = None
