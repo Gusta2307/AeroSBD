@@ -95,7 +95,10 @@ def create_tables():
             ID_C INTEGER NOT NULL,
             ID_F INTEGER NOT NULL,
             Date_booking timestamp NOT NULL, 
-            IS_paid INTEGER NOT NULL
+            IS_paid INTEGER NOT NULL,
+            FOREIGN KEY (Date_booking)
+                REFERENCES Date (Date_booking)
+                ON UPDATE CASCADE ON DELETE CASCADE,
         )
         """,
         """

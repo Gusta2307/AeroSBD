@@ -87,7 +87,7 @@ def for_user_type_start_menu(user_type, name):
     return [msg,reply_markup]
 
 def client_registration_menu(name):
-    msg = f"{name}, Por favor ingrese sus datos personales para registrarse en el bot. \n"
+    msg = f"{name}, Por favor ingrese sus datos personales para registrarse en el bot.\n"
     button_list = []
     button_list.append(telegram.InlineKeyboardButton("Nombre", callback_data="nombre", show_alert=True))
     button_list.append(telegram.InlineKeyboardButton("Apellidos", callback_data="apellidos"))
@@ -405,7 +405,7 @@ def employee_add_refresh_menu(context):
     button_list.append(telegram.InlineKeyboardButton("Instalacion", switch_inline_query_current_chat=".ih "))
     button_list.append(telegram.InlineKeyboardButton("Pais", switch_inline_query_current_chat=".phr "))
     button_list.append(telegram.InlineKeyboardButton("Guardar", callback_data="guardar"))
-    button_list.append(telegram.InlineKeyboardButton("Atras", callback_data="atras"))
+    #button_list.append(telegram.InlineKeyboardButton("Atras", callback_data="atras"))
     button_list.append(telegram.InlineKeyboardButton("Cancelar", callback_data="cancelar"))
     reply_markup = telegram.InlineKeyboardMarkup(build_menu(button_list, n_cols=1))
     return [msg,reply_markup]

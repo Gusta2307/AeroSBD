@@ -309,7 +309,6 @@ def save_data(context):
 def name_passeger_message_text(update, context):
     context.user_data['passeger_name'] = update.message.text
     update.message.delete()
-    print("DELETE")
     msg = into_data_pasajero_client_menu(context)
     msg[0] = data_passeger_client_refresh(msg[0], context)
     update.message.bot.edit_message_text(chat_id=update.message.chat_id, message_id=context.user_data['message_id'], text=msg[0], parse_mode = 'Markdown', reply_markup=msg[1])
