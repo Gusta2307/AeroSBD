@@ -751,8 +751,8 @@ def employee_chiefMachanic_refresh_menu(info_n, repair):
         msg += "No hay reparaciones a mostrar."
     else:# a partir de aqui esta las reparaciones
         for item in repair:
-            msg += "\nFecha de inicio: " + str(item[1].isoformat(' '))
-            msg += "\nFecha de finalizacion: " + str(item[2].isoformat(' '))
+            msg += "\nFecha de inicio: " + str(item[1]).split('.')[0]
+            msg += "\nFecha de finalizacion: " + str(item[2]).split('.')[0]
             msg += "\nTipo de reparacion general: " + str(item[3])
             msg += "\nCosto de la reparacion general: " + str(item[4])
             if item[8] != None:
