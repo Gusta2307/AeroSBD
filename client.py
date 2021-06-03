@@ -301,7 +301,7 @@ def save_passeger_client_callback_query(update, context):
     elif query == "no" or query == "atras":
         msg = into_data_pasajero_client_menu(context)
         msg[0] = data_passeger_client_refresh(msg[0], context)
-        update.message.bot.edit_message_text(chat_id=update.message.chat_id, message_id=context.user_data['message_id'], text=msg[0], parse_mode = 'Markdown', reply_markup=msg[1])
+        update.callback_query.message.edit_text(chat_id=update.message.chat_id, message_id=context.user_data['message_id'], text=msg[0], parse_mode = 'Markdown', reply_markup=msg[1])
         return CLIENT_INTO_DATA_PASS
     else:
         return cancel(update, context)
