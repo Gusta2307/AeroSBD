@@ -240,7 +240,7 @@ def insert_passenger_in_Passenger_Flow(ID_C, ID_F, isAccepted_S):
 
 def insert_apply_repair_repair(Enrollment, Cod_R, Days, ID_AeroP, ID_I):
     # fecha actual
-    now = str(datetime.now()).split('.')[0]
+    now = datetime.now()
     query1 = f"""
             INSERT INTO date (Date_Begin)
             SELECT {now} WHERE NOT EXISTS (SELECT Date_Begin FROM Date);
