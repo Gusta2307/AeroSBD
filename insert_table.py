@@ -241,11 +241,17 @@ def insert_passenger_in_Passenger_Flow(ID_C, ID_F, isAccepted_S):
 def insert_apply_repair_repair(Enrollment, Cod_R, Days, ID_AeroP, ID_I):
     # fecha actual
     now = datetime.now()
+    begin = now + timedelta(days=-int(Days))
     query1 = f"""
             INSERT INTO date (Date_Begin)
             SELECT \'{now}\' WHERE NOT EXISTS (SELECT Date_Begin FROM Date);
     """
-    begin = now + timedelta(days=-int(Days))
+
+    query2 = f"""
+            INSERT INTO date (Date_Begin)
+            SELECT \'{begin}\' WHERE NOT EXISTS (SELECT Date_Begin FROM Date);
+    """
+    
     query = f"""INSERT INTO Apply_Repair(Enrollment, Cod_R, Date_Begin, Date_End, Time, ID_AeroP, ID_I) 
                VALUES(%s, %s, \'{begin}\', \'{now}\', %s, %s, %s)
             """
@@ -254,6 +260,8 @@ def insert_apply_repair_repair(Enrollment, Cod_R, Days, ID_AeroP, ID_I):
         conn = psycopg2.connect(DATABASE_URL, sslmode='require')
         cur = conn.cursor()
         cur.execute(query1,)
+        conn.commit()
+        cur.execute(query2,)
         conn.commit()
         print("MMMMMMMM")
         cur.execute(query, (Enrollment, Cod_R, 0, ID_AeroP, ID_I))
