@@ -452,6 +452,7 @@ def employee_warehouseManager_add_prod_menu():
     return [msg,reply_markup]
 
 def employee_humanResources_info_menu(item):
+    print(item)
     msg = "Informacion del empleado\n"
     msg += "ID de Empleado: " + str(item[2]) + '\n' 
     msg += "No de Carnet: " + str(item[4]) + '\n' 
